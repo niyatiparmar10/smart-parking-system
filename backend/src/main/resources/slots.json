@@ -1,0 +1,1502 @@
+[
+  {
+    "slotId": "S001",
+    "lat": 18.535045,
+    "lng": 73.894313,
+    "zone": "Koregaon Park",
+    "type": "NORMAL",
+    "pricePerHour": 50,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S002",
+    "lat": 18.543895,
+    "lng": 73.894806,
+    "zone": "Koregaon Park",
+    "type": "NORMAL",
+    "pricePerHour": 50,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S003",
+    "lat": 18.541523,
+    "lng": 73.897051,
+    "zone": "Koregaon Park",
+    "type": "EV",
+    "pricePerHour": 30,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S004",
+    "lat": 18.542431,
+    "lng": 73.894729,
+    "zone": "Koregaon Park",
+    "type": "NORMAL",
+    "pricePerHour": 30,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S005",
+    "lat": 18.540218,
+    "lng": 73.894042,
+    "zone": "Koregaon Park",
+    "type": "DISABLED",
+    "pricePerHour": 30,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S006",
+    "lat": 18.531286,
+    "lng": 73.890844,
+    "zone": "Koregaon Park",
+    "type": "NORMAL",
+    "pricePerHour": 20,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S007",
+    "lat": 18.543985,
+    "lng": 73.898771,
+    "zone": "Koregaon Park",
+    "type": "EV",
+    "pricePerHour": 40,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S008",
+    "lat": 18.538638,
+    "lng": 73.895143,
+    "zone": "Koregaon Park",
+    "type": "NORMAL",
+    "pricePerHour": 50,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S009",
+    "lat": 18.532221,
+    "lng": 73.887032,
+    "zone": "Koregaon Park",
+    "type": "NORMAL",
+    "pricePerHour": 20,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S010",
+    "lat": 18.54142,
+    "lng": 73.89003,
+    "zone": "Koregaon Park",
+    "type": "NORMAL",
+    "pricePerHour": 30,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S011",
+    "lat": 18.53294,
+    "lng": 73.898963,
+    "zone": "Koregaon Park",
+    "type": "NORMAL",
+    "pricePerHour": 50,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S012",
+    "lat": 18.542433,
+    "lng": 73.887347,
+    "zone": "Koregaon Park",
+    "type": "DISABLED",
+    "pricePerHour": 50,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S013",
+    "lat": 18.536087,
+    "lng": 73.891668,
+    "zone": "Koregaon Park",
+    "type": "DISABLED",
+    "pricePerHour": 30,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S014",
+    "lat": 18.531549,
+    "lng": 73.890485,
+    "zone": "Koregaon Park",
+    "type": "NORMAL",
+    "pricePerHour": 40,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S015",
+    "lat": 18.541988,
+    "lng": 73.899311,
+    "zone": "Koregaon Park",
+    "type": "NORMAL",
+    "pricePerHour": 40,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S016",
+    "lat": 18.535499,
+    "lng": 73.843623,
+    "zone": "Shivajinagar",
+    "type": "NORMAL",
+    "pricePerHour": 30,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S017",
+    "lat": 18.533842,
+    "lng": 73.845835,
+    "zone": "Shivajinagar",
+    "type": "DISABLED",
+    "pricePerHour": 20,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S018",
+    "lat": 18.529694,
+    "lng": 73.854122,
+    "zone": "Shivajinagar",
+    "type": "NORMAL",
+    "pricePerHour": 20,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S019",
+    "lat": 18.528141,
+    "lng": 73.843204,
+    "zone": "Shivajinagar",
+    "type": "NORMAL",
+    "pricePerHour": 50,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S020",
+    "lat": 18.535839,
+    "lng": 73.847072,
+    "zone": "Shivajinagar",
+    "type": "DISABLED",
+    "pricePerHour": 20,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S021",
+    "lat": 18.533265,
+    "lng": 73.848393,
+    "zone": "Shivajinagar",
+    "type": "DISABLED",
+    "pricePerHour": 30,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S022",
+    "lat": 18.534639,
+    "lng": 73.854155,
+    "zone": "Shivajinagar",
+    "type": "NORMAL",
+    "pricePerHour": 50,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S023",
+    "lat": 18.53617,
+    "lng": 73.841525,
+    "zone": "Shivajinagar",
+    "type": "NORMAL",
+    "pricePerHour": 30,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S024",
+    "lat": 18.524537,
+    "lng": 73.844399,
+    "zone": "Shivajinagar",
+    "type": "DISABLED",
+    "pricePerHour": 30,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S025",
+    "lat": 18.536583,
+    "lng": 73.852195,
+    "zone": "Shivajinagar",
+    "type": "NORMAL",
+    "pricePerHour": 50,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S026",
+    "lat": 18.527018,
+    "lng": 73.848749,
+    "zone": "Shivajinagar",
+    "type": "NORMAL",
+    "pricePerHour": 20,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S027",
+    "lat": 18.530764,
+    "lng": 73.843004,
+    "zone": "Shivajinagar",
+    "type": "EV",
+    "pricePerHour": 50,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S028",
+    "lat": 18.524384,
+    "lng": 73.851026,
+    "zone": "Shivajinagar",
+    "type": "NORMAL",
+    "pricePerHour": 30,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S029",
+    "lat": 18.537266,
+    "lng": 73.851527,
+    "zone": "Shivajinagar",
+    "type": "NORMAL",
+    "pricePerHour": 40,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S030",
+    "lat": 18.527986,
+    "lng": 73.854552,
+    "zone": "Shivajinagar",
+    "type": "EV",
+    "pricePerHour": 30,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S031",
+    "lat": 18.513825,
+    "lng": 73.844017,
+    "zone": "FC Road",
+    "type": "EV",
+    "pricePerHour": 20,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S032",
+    "lat": 18.518155,
+    "lng": 73.834118,
+    "zone": "FC Road",
+    "type": "NORMAL",
+    "pricePerHour": 50,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S033",
+    "lat": 18.523256,
+    "lng": 73.843912,
+    "zone": "FC Road",
+    "type": "NORMAL",
+    "pricePerHour": 30,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S034",
+    "lat": 18.514612,
+    "lng": 73.83919,
+    "zone": "FC Road",
+    "type": "DISABLED",
+    "pricePerHour": 50,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S035",
+    "lat": 18.517552,
+    "lng": 73.83667,
+    "zone": "FC Road",
+    "type": "NORMAL",
+    "pricePerHour": 30,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S036",
+    "lat": 18.521697,
+    "lng": 73.841516,
+    "zone": "FC Road",
+    "type": "DISABLED",
+    "pricePerHour": 40,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S037",
+    "lat": 18.513715,
+    "lng": 73.831972,
+    "zone": "FC Road",
+    "type": "NORMAL",
+    "pricePerHour": 30,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S038",
+    "lat": 18.514397,
+    "lng": 73.846037,
+    "zone": "FC Road",
+    "type": "NORMAL",
+    "pricePerHour": 20,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S039",
+    "lat": 18.517133,
+    "lng": 73.840177,
+    "zone": "FC Road",
+    "type": "DISABLED",
+    "pricePerHour": 40,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S040",
+    "lat": 18.516959,
+    "lng": 73.842801,
+    "zone": "FC Road",
+    "type": "NORMAL",
+    "pricePerHour": 40,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S041",
+    "lat": 18.521848,
+    "lng": 73.843503,
+    "zone": "FC Road",
+    "type": "EV",
+    "pricePerHour": 20,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S042",
+    "lat": 18.51701,
+    "lng": 73.846784,
+    "zone": "FC Road",
+    "type": "NORMAL",
+    "pricePerHour": 40,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S043",
+    "lat": 18.524422,
+    "lng": 73.840857,
+    "zone": "FC Road",
+    "type": "EV",
+    "pricePerHour": 20,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S044",
+    "lat": 18.522814,
+    "lng": 73.83681,
+    "zone": "FC Road",
+    "type": "NORMAL",
+    "pricePerHour": 30,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S045",
+    "lat": 18.512235,
+    "lng": 73.833831,
+    "zone": "FC Road",
+    "type": "NORMAL",
+    "pricePerHour": 40,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S046",
+    "lat": 18.513518,
+    "lng": 73.80023,
+    "zone": "Kothrud",
+    "type": "EV",
+    "pricePerHour": 30,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S047",
+    "lat": 18.509335,
+    "lng": 73.813256,
+    "zone": "Kothrud",
+    "type": "NORMAL",
+    "pricePerHour": 40,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S048",
+    "lat": 18.504509,
+    "lng": 73.810873,
+    "zone": "Kothrud",
+    "type": "DISABLED",
+    "pricePerHour": 30,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S049",
+    "lat": 18.501686,
+    "lng": 73.801372,
+    "zone": "Kothrud",
+    "type": "NORMAL",
+    "pricePerHour": 20,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S050",
+    "lat": 18.51276,
+    "lng": 73.80012,
+    "zone": "Kothrud",
+    "type": "DISABLED",
+    "pricePerHour": 20,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S051",
+    "lat": 18.506367,
+    "lng": 73.811814,
+    "zone": "Kothrud",
+    "type": "DISABLED",
+    "pricePerHour": 40,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S052",
+    "lat": 18.500115,
+    "lng": 73.804938,
+    "zone": "Kothrud",
+    "type": "DISABLED",
+    "pricePerHour": 40,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S053",
+    "lat": 18.511935,
+    "lng": 73.804753,
+    "zone": "Kothrud",
+    "type": "DISABLED",
+    "pricePerHour": 40,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S054",
+    "lat": 18.506099,
+    "lng": 73.804846,
+    "zone": "Kothrud",
+    "type": "DISABLED",
+    "pricePerHour": 20,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S055",
+    "lat": 18.510822,
+    "lng": 73.802576,
+    "zone": "Kothrud",
+    "type": "NORMAL",
+    "pricePerHour": 40,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S056",
+    "lat": 18.509662,
+    "lng": 73.811757,
+    "zone": "Kothrud",
+    "type": "NORMAL",
+    "pricePerHour": 20,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S057",
+    "lat": 18.502946,
+    "lng": 73.800956,
+    "zone": "Kothrud",
+    "type": "NORMAL",
+    "pricePerHour": 20,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S058",
+    "lat": 18.508453,
+    "lng": 73.81147,
+    "zone": "Kothrud",
+    "type": "NORMAL",
+    "pricePerHour": 50,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S059",
+    "lat": 18.515278,
+    "lng": 73.808653,
+    "zone": "Kothrud",
+    "type": "NORMAL",
+    "pricePerHour": 40,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S060",
+    "lat": 18.500516,
+    "lng": 73.802914,
+    "zone": "Kothrud",
+    "type": "NORMAL",
+    "pricePerHour": 40,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S061",
+    "lat": 18.507872,
+    "lng": 73.925838,
+    "zone": "Hadapsar",
+    "type": "NORMAL",
+    "pricePerHour": 50,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S062",
+    "lat": 18.507846,
+    "lng": 73.92517,
+    "zone": "Hadapsar",
+    "type": "DISABLED",
+    "pricePerHour": 40,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S063",
+    "lat": 18.506564,
+    "lng": 73.92352,
+    "zone": "Hadapsar",
+    "type": "NORMAL",
+    "pricePerHour": 40,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S064",
+    "lat": 18.502002,
+    "lng": 73.924414,
+    "zone": "Hadapsar",
+    "type": "NORMAL",
+    "pricePerHour": 50,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S065",
+    "lat": 18.510255,
+    "lng": 73.928207,
+    "zone": "Hadapsar",
+    "type": "NORMAL",
+    "pricePerHour": 30,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S066",
+    "lat": 18.50145,
+    "lng": 73.918572,
+    "zone": "Hadapsar",
+    "type": "NORMAL",
+    "pricePerHour": 30,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S067",
+    "lat": 18.509289,
+    "lng": 73.933226,
+    "zone": "Hadapsar",
+    "type": "NORMAL",
+    "pricePerHour": 50,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S068",
+    "lat": 18.503003,
+    "lng": 73.929962,
+    "zone": "Hadapsar",
+    "type": "EV",
+    "pricePerHour": 40,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S069",
+    "lat": 18.508246,
+    "lng": 73.92414,
+    "zone": "Hadapsar",
+    "type": "NORMAL",
+    "pricePerHour": 50,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S070",
+    "lat": 18.514671,
+    "lng": 73.920308,
+    "zone": "Hadapsar",
+    "type": "NORMAL",
+    "pricePerHour": 30,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S071",
+    "lat": 18.508477,
+    "lng": 73.93268,
+    "zone": "Hadapsar",
+    "type": "NORMAL",
+    "pricePerHour": 50,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S072",
+    "lat": 18.507038,
+    "lng": 73.927254,
+    "zone": "Hadapsar",
+    "type": "NORMAL",
+    "pricePerHour": 30,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S073",
+    "lat": 18.501656,
+    "lng": 73.920477,
+    "zone": "Hadapsar",
+    "type": "NORMAL",
+    "pricePerHour": 40,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S074",
+    "lat": 18.512116,
+    "lng": 73.926626,
+    "zone": "Hadapsar",
+    "type": "EV",
+    "pricePerHour": 30,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S075",
+    "lat": 18.500969,
+    "lng": 73.923971,
+    "zone": "Hadapsar",
+    "type": "NORMAL",
+    "pricePerHour": 30,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S076",
+    "lat": 18.568157,
+    "lng": 73.908359,
+    "zone": "Viman Nagar",
+    "type": "DISABLED",
+    "pricePerHour": 40,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S077",
+    "lat": 18.564198,
+    "lng": 73.908325,
+    "zone": "Viman Nagar",
+    "type": "EV",
+    "pricePerHour": 20,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S078",
+    "lat": 18.56461,
+    "lng": 73.918389,
+    "zone": "Viman Nagar",
+    "type": "NORMAL",
+    "pricePerHour": 40,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S079",
+    "lat": 18.562809,
+    "lng": 73.920506,
+    "zone": "Viman Nagar",
+    "type": "NORMAL",
+    "pricePerHour": 20,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S080",
+    "lat": 18.572409,
+    "lng": 73.913748,
+    "zone": "Viman Nagar",
+    "type": "EV",
+    "pricePerHour": 40,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S081",
+    "lat": 18.572412,
+    "lng": 73.921699,
+    "zone": "Viman Nagar",
+    "type": "NORMAL",
+    "pricePerHour": 30,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S082",
+    "lat": 18.566856,
+    "lng": 73.908857,
+    "zone": "Viman Nagar",
+    "type": "DISABLED",
+    "pricePerHour": 20,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S083",
+    "lat": 18.561226,
+    "lng": 73.912255,
+    "zone": "Viman Nagar",
+    "type": "EV",
+    "pricePerHour": 20,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S084",
+    "lat": 18.570794,
+    "lng": 73.913136,
+    "zone": "Viman Nagar",
+    "type": "DISABLED",
+    "pricePerHour": 40,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S085",
+    "lat": 18.569653,
+    "lng": 73.907688,
+    "zone": "Viman Nagar",
+    "type": "NORMAL",
+    "pricePerHour": 40,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S086",
+    "lat": 18.565712,
+    "lng": 73.912212,
+    "zone": "Viman Nagar",
+    "type": "NORMAL",
+    "pricePerHour": 40,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S087",
+    "lat": 18.57054,
+    "lng": 73.917281,
+    "zone": "Viman Nagar",
+    "type": "EV",
+    "pricePerHour": 20,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S088",
+    "lat": 18.56225,
+    "lng": 73.921855,
+    "zone": "Viman Nagar",
+    "type": "EV",
+    "pricePerHour": 50,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S089",
+    "lat": 18.562337,
+    "lng": 73.914531,
+    "zone": "Viman Nagar",
+    "type": "DISABLED",
+    "pricePerHour": 40,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S090",
+    "lat": 18.563311,
+    "lng": 73.909455,
+    "zone": "Viman Nagar",
+    "type": "NORMAL",
+    "pricePerHour": 20,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S091",
+    "lat": 18.566164,
+    "lng": 73.802651,
+    "zone": "Aundh",
+    "type": "EV",
+    "pricePerHour": 50,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S092",
+    "lat": 18.566315,
+    "lng": 73.806698,
+    "zone": "Aundh",
+    "type": "NORMAL",
+    "pricePerHour": 40,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S093",
+    "lat": 18.552324,
+    "lng": 73.807155,
+    "zone": "Aundh",
+    "type": "NORMAL",
+    "pricePerHour": 50,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S094",
+    "lat": 18.56418,
+    "lng": 73.8101,
+    "zone": "Aundh",
+    "type": "NORMAL",
+    "pricePerHour": 40,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S095",
+    "lat": 18.554032,
+    "lng": 73.810144,
+    "zone": "Aundh",
+    "type": "DISABLED",
+    "pricePerHour": 40,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S096",
+    "lat": 18.564032,
+    "lng": 73.815365,
+    "zone": "Aundh",
+    "type": "NORMAL",
+    "pricePerHour": 40,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S097",
+    "lat": 18.564224,
+    "lng": 73.814039,
+    "zone": "Aundh",
+    "type": "EV",
+    "pricePerHour": 50,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S098",
+    "lat": 18.56327,
+    "lng": 73.811905,
+    "zone": "Aundh",
+    "type": "NORMAL",
+    "pricePerHour": 50,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S099",
+    "lat": 18.562831,
+    "lng": 73.801466,
+    "zone": "Aundh",
+    "type": "EV",
+    "pricePerHour": 50,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S100",
+    "lat": 18.553563,
+    "lng": 73.810864,
+    "zone": "Aundh",
+    "type": "NORMAL",
+    "pricePerHour": 50,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S101",
+    "lat": 18.563376,
+    "lng": 73.80554,
+    "zone": "Aundh",
+    "type": "EV",
+    "pricePerHour": 30,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S102",
+    "lat": 18.561117,
+    "lng": 73.811261,
+    "zone": "Aundh",
+    "type": "NORMAL",
+    "pricePerHour": 20,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S103",
+    "lat": 18.551204,
+    "lng": 73.814102,
+    "zone": "Aundh",
+    "type": "NORMAL",
+    "pricePerHour": 20,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S104",
+    "lat": 18.562962,
+    "lng": 73.803696,
+    "zone": "Aundh",
+    "type": "NORMAL",
+    "pricePerHour": 30,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S105",
+    "lat": 18.552466,
+    "lng": 73.810423,
+    "zone": "Aundh",
+    "type": "NORMAL",
+    "pricePerHour": 30,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S106",
+    "lat": 18.553334,
+    "lng": 73.792802,
+    "zone": "Baner",
+    "type": "NORMAL",
+    "pricePerHour": 30,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S107",
+    "lat": 18.566404,
+    "lng": 73.779672,
+    "zone": "Baner",
+    "type": "NORMAL",
+    "pricePerHour": 50,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S108",
+    "lat": 18.565621,
+    "lng": 73.785263,
+    "zone": "Baner",
+    "type": "NORMAL",
+    "pricePerHour": 50,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S109",
+    "lat": 18.553031,
+    "lng": 73.785801,
+    "zone": "Baner",
+    "type": "DISABLED",
+    "pricePerHour": 50,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S110",
+    "lat": 18.558275,
+    "lng": 73.793377,
+    "zone": "Baner",
+    "type": "NORMAL",
+    "pricePerHour": 30,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S111",
+    "lat": 18.564254,
+    "lng": 73.783886,
+    "zone": "Baner",
+    "type": "EV",
+    "pricePerHour": 50,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S112",
+    "lat": 18.558811,
+    "lng": 73.783011,
+    "zone": "Baner",
+    "type": "NORMAL",
+    "pricePerHour": 40,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S113",
+    "lat": 18.564862,
+    "lng": 73.784128,
+    "zone": "Baner",
+    "type": "NORMAL",
+    "pricePerHour": 30,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S114",
+    "lat": 18.553982,
+    "lng": 73.787677,
+    "zone": "Baner",
+    "type": "EV",
+    "pricePerHour": 20,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S115",
+    "lat": 18.564337,
+    "lng": 73.787974,
+    "zone": "Baner",
+    "type": "NORMAL",
+    "pricePerHour": 40,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S116",
+    "lat": 18.565885,
+    "lng": 73.781199,
+    "zone": "Baner",
+    "type": "DISABLED",
+    "pricePerHour": 20,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S117",
+    "lat": 18.553232,
+    "lng": 73.792005,
+    "zone": "Baner",
+    "type": "EV",
+    "pricePerHour": 30,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S118",
+    "lat": 18.56197,
+    "lng": 73.783003,
+    "zone": "Baner",
+    "type": "EV",
+    "pricePerHour": 30,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S119",
+    "lat": 18.553597,
+    "lng": 73.788607,
+    "zone": "Baner",
+    "type": "NORMAL",
+    "pricePerHour": 30,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S120",
+    "lat": 18.557885,
+    "lng": 73.78117,
+    "zone": "Baner",
+    "type": "EV",
+    "pricePerHour": 50,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S121",
+    "lat": 18.513816,
+    "lng": 73.877295,
+    "zone": "Camp",
+    "type": "NORMAL",
+    "pricePerHour": 30,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S122",
+    "lat": 18.52645,
+    "lng": 73.877436,
+    "zone": "Camp",
+    "type": "DISABLED",
+    "pricePerHour": 40,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S123",
+    "lat": 18.517769,
+    "lng": 73.87331,
+    "zone": "Camp",
+    "type": "NORMAL",
+    "pricePerHour": 30,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S124",
+    "lat": 18.511613,
+    "lng": 73.874438,
+    "zone": "Camp",
+    "type": "DISABLED",
+    "pricePerHour": 50,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S125",
+    "lat": 18.520072,
+    "lng": 73.868516,
+    "zone": "Camp",
+    "type": "DISABLED",
+    "pricePerHour": 50,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S126",
+    "lat": 18.521366,
+    "lng": 73.883084,
+    "zone": "Camp",
+    "type": "NORMAL",
+    "pricePerHour": 50,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S127",
+    "lat": 18.519039,
+    "lng": 73.876215,
+    "zone": "Camp",
+    "type": "NORMAL",
+    "pricePerHour": 20,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S128",
+    "lat": 18.527295,
+    "lng": 73.878038,
+    "zone": "Camp",
+    "type": "NORMAL",
+    "pricePerHour": 30,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S129",
+    "lat": 18.520989,
+    "lng": 73.876352,
+    "zone": "Camp",
+    "type": "NORMAL",
+    "pricePerHour": 50,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S130",
+    "lat": 18.523664,
+    "lng": 73.870738,
+    "zone": "Camp",
+    "type": "DISABLED",
+    "pricePerHour": 50,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S131",
+    "lat": 18.516775,
+    "lng": 73.883461,
+    "zone": "Camp",
+    "type": "NORMAL",
+    "pricePerHour": 50,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S132",
+    "lat": 18.516171,
+    "lng": 73.883814,
+    "zone": "Camp",
+    "type": "NORMAL",
+    "pricePerHour": 40,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S133",
+    "lat": 18.523054,
+    "lng": 73.879741,
+    "zone": "Camp",
+    "type": "NORMAL",
+    "pricePerHour": 20,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S134",
+    "lat": 18.511733,
+    "lng": 73.879551,
+    "zone": "Camp",
+    "type": "EV",
+    "pricePerHour": 40,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S135",
+    "lat": 18.51258,
+    "lng": 73.877491,
+    "zone": "Camp",
+    "type": "NORMAL",
+    "pricePerHour": 50,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S136",
+    "lat": 18.508619,
+    "lng": 73.845626,
+    "zone": "Deccan",
+    "type": "NORMAL",
+    "pricePerHour": 20,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S137",
+    "lat": 18.522861,
+    "lng": 73.84124,
+    "zone": "Deccan",
+    "type": "NORMAL",
+    "pricePerHour": 40,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S138",
+    "lat": 18.518372,
+    "lng": 73.846042,
+    "zone": "Deccan",
+    "type": "DISABLED",
+    "pricePerHour": 20,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S139",
+    "lat": 18.521031,
+    "lng": 73.833666,
+    "zone": "Deccan",
+    "type": "NORMAL",
+    "pricePerHour": 50,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S140",
+    "lat": 18.520685,
+    "lng": 73.843301,
+    "zone": "Deccan",
+    "type": "NORMAL",
+    "pricePerHour": 40,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S141",
+    "lat": 18.521303,
+    "lng": 73.84092,
+    "zone": "Deccan",
+    "type": "EV",
+    "pricePerHour": 20,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S142",
+    "lat": 18.516839,
+    "lng": 73.836561,
+    "zone": "Deccan",
+    "type": "NORMAL",
+    "pricePerHour": 20,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S143",
+    "lat": 18.508482,
+    "lng": 73.833604,
+    "zone": "Deccan",
+    "type": "NORMAL",
+    "pricePerHour": 40,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S144",
+    "lat": 18.517864,
+    "lng": 73.83588,
+    "zone": "Deccan",
+    "type": "NORMAL",
+    "pricePerHour": 30,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S145",
+    "lat": 18.51837,
+    "lng": 73.844541,
+    "zone": "Deccan",
+    "type": "NORMAL",
+    "pricePerHour": 20,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S146",
+    "lat": 18.522609,
+    "lng": 73.844194,
+    "zone": "Deccan",
+    "type": "NORMAL",
+    "pricePerHour": 20,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S147",
+    "lat": 18.51587,
+    "lng": 73.83694,
+    "zone": "Deccan",
+    "type": "EV",
+    "pricePerHour": 20,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S148",
+    "lat": 18.511831,
+    "lng": 73.848711,
+    "zone": "Deccan",
+    "type": "NORMAL",
+    "pricePerHour": 30,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S149",
+    "lat": 18.515136,
+    "lng": 73.848349,
+    "zone": "Deccan",
+    "type": "NORMAL",
+    "pricePerHour": 20,
+    "isOccupied": false,
+    "bookings": []
+  },
+  {
+    "slotId": "S150",
+    "lat": 18.509608,
+    "lng": 73.844907,
+    "zone": "Deccan",
+    "type": "NORMAL",
+    "pricePerHour": 50,
+    "isOccupied": false,
+    "bookings": []
+  }
+]
