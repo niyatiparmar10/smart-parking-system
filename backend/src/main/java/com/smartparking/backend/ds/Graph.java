@@ -38,10 +38,9 @@ public class Graph {
         indexToZone = new HashMap<>();
         adjList = new ArrayList<>();
 
-        // Register all zones
         String[] zones = {
-            "Koregaon Park", "Shivajinagar", "FC Road", "Kothrud",
-            "Hadapsar", "Viman Nagar", "Aundh", "Baner", "Camp", "Deccan"
+            "Zone A", "Zone B", "Zone C",
+            "Zone D", "Zone E", "Zone F"
         };
 
         numZones = zones.length;
@@ -51,28 +50,16 @@ public class Graph {
             adjList.add(new ArrayList<>());
         }
 
-        // Build edges (bidirectional, weight = approx km between zones)
-        // Based on real Pune geography
-        addEdge("Koregaon Park", "Viman Nagar",   3);
-        addEdge("Koregaon Park", "Camp",           4);
-        addEdge("Koregaon Park", "Hadapsar",       6);
-        addEdge("Koregaon Park", "Shivajinagar",   5);
-        addEdge("Shivajinagar", "FC Road",         2);
-        addEdge("Shivajinagar", "Deccan",          2);
-        addEdge("Shivajinagar", "Camp",            3);
-        addEdge("FC Road",      "Deccan",          1);
-        addEdge("FC Road",      "Kothrud",         4);
-        addEdge("Kothrud",      "Deccan",          4);
-        addEdge("Kothrud",      "Baner",           5);
-        addEdge("Kothrud",      "Aundh",           6);
-        addEdge("Aundh",        "Baner",           3);
-        addEdge("Aundh",        "Shivajinagar",    5);
-        addEdge("Baner",        "Shivajinagar",    7);
-        addEdge("Camp",         "Hadapsar",        5);
-        addEdge("Camp",         "Deccan",          3);
-        addEdge("Viman Nagar",  "Hadapsar",        5);
-        addEdge("Viman Nagar",  "Camp",            4);
-        addEdge("Deccan",       "Aundh",           5);
+        // Walking distances in meters between mall zones
+        addEdge("Zone A", "Zone B", 50);
+        addEdge("Zone A", "Zone C", 80);
+        addEdge("Zone B", "Zone C", 60);
+        addEdge("Zone B", "Zone D", 70);
+        addEdge("Zone C", "Zone D", 50);
+        addEdge("Zone C", "Zone E", 90);
+        addEdge("Zone D", "Zone E", 70);
+        addEdge("Zone D", "Zone F", 80);
+        addEdge("Zone E", "Zone F", 50);
     }
 
     private void addEdge(String zone1, String zone2, int distKm) {

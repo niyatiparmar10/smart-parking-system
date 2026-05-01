@@ -1,55 +1,53 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import MapPanel from "./components/MapPanel";
 import BookingForm from "./components/BookingForm";
 import ResultCard from "./components/ResultCard";
 import ZoneStats from "./components/ZoneStats";
-import MyBookings from "./components/MyBookings";
+import AdminBookings from "./components/AdminBookings";
+import KioskPage from "./components/KioskPage";
 
 const API = "http://localhost:8080/api";
 
-// ✅ FIX 1: distanceBetween is at TOP LEVEL, not inside any function
-function distanceBetween(lat1, lng1, lat2, lng2) {
-  const dLat = lat1 - lat2;
-  const dLng = lng1 - lng2;
-  return Math.sqrt(dLat * dLat + dLng * dLng) * 111000;
-}
-
 export default function App() {
+  const [isKiosk, setIsKiosk] = useState(false);
   const [slots, setSlots] = useState([]);
   const [booking, setBooking] = useState(null);
-  const [myBookings, setMyBookings] = useState([]);
+  const [allBookings, setAllBookings] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [browseMode, setBrowseMode] = useState(false);
-  const [browseSlots, setBrowseSlots] = useState([]);
-  const [userLocation, setUserLocation] = useState(null);
-  const [reallocation, setReallocation] = useState(null);
   const [selectedSlot, setSelectedSlot] = useState(null);
-  const reallocationTimer = useRef(null);
 
   const refreshSlots = async () => {
-    const res = await axios.get(`${API}/slots`);
-    setSlots(res.data);
+    try {
+      const res = await axios.get(`${API}/slots`);
+      setSlots(res.data);
+      setAllBookings(res.data.filter((s) => s.isOccupied));
+    } catch {
+      // API error
+    }
   };
 
   useEffect(() => {
     refreshSlots();
   }, []);
 
+  // When exiting Kiosk mode, refresh the admin panel
+  useEffect(() => {
+    if (!isKiosk) {
+      refreshSlots();
+    }
+  }, [isKiosk]);
+
   const handleBook = async (formData) => {
     setLoading(true);
     setError(null);
-    setReallocation(null);
     try {
       const res = await axios.post(`${API}/book`, formData);
       if (res.data.message === "success") {
         setBooking(res.data);
-        setMyBookings((prev) => [...prev, { ...res.data, ...formData }]);
         await refreshSlots();
-        if (!formData.directBook) {
-          startReallocationWatch(res.data, formData);
-        }
+        alert("Force allocation successful.");
       } else {
         setError(res.data.message);
       }
@@ -60,104 +58,67 @@ export default function App() {
     setSelectedSlot(null);
   };
 
-  const handleCancel = async (b) => {
-    await axios.post(
-      `${API}/cancel?slotId=${b.slotId}&startMin=${b.startMin}&endMin=${b.endMin}`,
-    );
-    setMyBookings((prev) => prev.filter((x) => x.slotId !== b.slotId));
-    if (booking?.slotId === b.slotId) setBooking(null);
-    await refreshSlots();
-  };
+  const handleAdminCancel = async (slot) => {
+    try {
+      // Pass the existing booking times back so backend cleanly deletes it
+      const sMin = slot.bookings[slot.bookings.length - 1][0];
+      const eMin = slot.bookings[slot.bookings.length - 1][1];
 
-  const startReallocationWatch = (current, formData) => {
-    if (reallocationTimer.current) clearInterval(reallocationTimer.current);
-
-    reallocationTimer.current = setInterval(async () => {
-      try {
-        const res = await axios.get(`${API}/slots`);
-
-        const nearbyFreeSlot = res.data.find((s) => {
-          if (s.isOccupied) return false;
-          if (s.slotId === current.slotId) return false;
-          const d = distanceBetween(s.lat, s.lng, formData.lat, formData.lng);
-          return d < current.distanceMeters - 50;
-        });
-
-        if (nearbyFreeSlot) {
-          // Cancel old booking first
-          await axios.post(
-            `${API}/cancel?slotId=${current.slotId}&startMin=${formData.startMin}&endMin=${formData.endMin}`,
-          );
-          // Book the better slot
-          const newBooking = await axios.post(`${API}/book`, formData);
-          if (newBooking.data.message === "success") {
-            setReallocation(newBooking.data);
-            setBooking(newBooking.data);
-            setMyBookings((prev) =>
-              prev.map((b) =>
-                b.slotId === current.slotId
-                  ? { ...newBooking.data, ...formData }
-                  : b,
-              ),
-            );
-            await refreshSlots();
-            clearInterval(reallocationTimer.current);
-          }
-        }
-      } catch {
-        /* silent */
+      const res = await axios.post(
+        `${API}/cancel?slotId=${slot.slotId}&startMin=${sMin}&endMin=${eMin}`,
+      );
+      if (booking?.slotId === slot.slotId) setBooking(null);
+      await refreshSlots();
+      // Inform the Admin if a dynamic reallocation happened behind the scenes!
+      if (res.data && res.data.includes("Reallocated")) {
+        alert(res.data);
       }
-    }, 15000);
-
-    setTimeout(() => clearInterval(reallocationTimer.current), 120000);
+    } catch (e) {
+      console.error(e);
+    }
   };
 
-  const handleBrowse = async (lat, lng) => {
-    setBrowseMode(true);
-    const res = await axios.get(`${API}/browse?lat=${lat}&lng=${lng}`);
-    setBrowseSlots(res.data);
-  };
-
-  // ✅ FIX 2: simple and direct — no async getNearestZone,
-  // just find nearest zone from already-loaded slots state
   const handleDemoCongest = async () => {
-    let zone = "Koregaon Park"; // default fallback
-
-    if (userLocation && slots.length > 0) {
-      const nearest = slots
-        .filter((s) => !s.isOccupied)
-        .sort(
-          (a, b) =>
-            distanceBetween(a.lat, a.lng, userLocation.lat, userLocation.lng) -
-            distanceBetween(b.lat, b.lng, userLocation.lat, userLocation.lng),
-        )[0];
-      if (nearest) zone = nearest.zone;
-    }
-
-    await axios.post(`${API}/demo/congest?zone=${encodeURIComponent(zone)}`);
-    await refreshSlots();
-    alert(`Congestion simulated in "${zone}". Now click Find & Book Slot!`);
-  };
-
-  const handleDemoFreeCloser = async () => {
-    if (!booking) {
-      alert("Book a slot first, then click this.");
-      return;
-    }
-    await axios.post(
-      `${API}/demo/free-closest?lat=${booking.lat}&lng=${booking.lng}`,
-    );
-    // Reallocation timer will detect this within 15 seconds automatically
+    try {
+      const res = await axios.post(`${API}/demo/congest?zone=Zone%20A`);
+      await refreshSlots();
+      alert(res.data + " - Go to Kiosk and book a slot to see rerouting to Zone B!");
+    } catch (e) {}
   };
 
   const handleDemoReset = async () => {
     await axios.post(`${API}/demo/reset`);
     setBooking(null);
-    setMyBookings([]);
-    setReallocation(null);
-    if (reallocationTimer.current) clearInterval(reallocationTimer.current);
+    setAllBookings([]);
     await refreshSlots();
   };
+
+  if (isKiosk) {
+    return (
+      <div>
+        <button
+          onClick={() => setIsKiosk(false)}
+          style={{
+            position: "fixed",
+            top: "12px",
+            right: "12px",
+            zIndex: 9999,
+            padding: "6px 14px",
+            background: "rgba(255,255,255,0.1)",
+            border: "1px solid rgba(255,255,255,0.2)",
+            borderRadius: "8px",
+            color: "#94a3b8",
+            fontSize: "12px",
+            cursor: "pointer",
+            fontFamily: "'Inter', sans-serif",
+          }}
+        >
+          Admin View
+        </button>
+        <KioskPage />
+      </div>
+    );
+  }
 
   return (
     <div>
@@ -165,27 +126,37 @@ export default function App() {
         <div className="topbar-logo">
           <div className="logo-icon">P</div>
           <div>
-            <h1>SmartPark</h1>
+            <h1>SmartPark Admin</h1>
             <span>Pune, India</span>
           </div>
         </div>
         <SearchBar api={API} />
+        <button
+          onClick={() => setIsKiosk(true)}
+          style={{
+            padding: "6px 14px",
+            background: "rgba(0,200,150,0.1)",
+            border: "1px solid rgba(0,200,150,0.2)",
+            borderRadius: "8px",
+            color: "#00c896",
+            fontSize: "12px",
+            cursor: "pointer",
+            fontFamily: "'Inter', sans-serif",
+            marginLeft: "8px",
+          }}
+        >
+          Kiosk View
+        </button>
         <div className="demo-bar">
-          <span className="demo-label">Demo</span>
+          <span className="demo-label">Demo Tools</span>
           <button
             className="btn-demo btn-demo-congest"
             onClick={handleDemoCongest}
           >
-            Simulate Congestion
-          </button>
-          <button
-            className="btn-demo btn-demo-reset"
-            onClick={handleDemoFreeCloser}
-          >
-            Free Closer Slot
+            Spam Traffic (Zone A)
           </button>
           <button className="btn-demo btn-demo-reset" onClick={handleDemoReset}>
-            Reset All
+            Reset Everything
           </button>
         </div>
       </div>
@@ -193,39 +164,18 @@ export default function App() {
       <div className="main-layout">
         <div className="map-container">
           <MapPanel
-            slots={browseMode ? browseSlots : slots}
+            slots={slots}
             booking={booking}
-            userLocation={userLocation}
-            browseMode={browseMode}
+            browseMode={false}
             onSlotClick={setSelectedSlot}
           />
         </div>
 
         <div className="side-panel">
-          {reallocation && (
-            <div className="panel-section">
-              <div className="reallocation-banner">
-                🔄{" "}
-                <div>
-                  <strong>Better slot found!</strong> Reassigned to{" "}
-                  <strong>{reallocation.slotId}</strong> —{" "}
-                  {Math.round(reallocation.distanceMeters)}m away
-                </div>
-              </div>
-            </div>
-          )}
-
           <div className="panel-section">
             <BookingForm
               onBook={handleBook}
-              onBrowse={handleBrowse}
-              onExitBrowse={() => {
-                setBrowseMode(false);
-                setBrowseSlots([]);
-              }}
-              browseMode={browseMode}
               loading={loading}
-              setUserLocation={setUserLocation}
               selectedSlot={selectedSlot}
             />
             {error && (
@@ -237,15 +187,18 @@ export default function App() {
 
           {booking && (
             <div className="panel-section">
-              <div className="section-title">Your Booking</div>
+              <div className="section-title">Manual Force Allocation Result</div>
               <ResultCard booking={booking} />
             </div>
           )}
 
-          {myBookings.length > 0 && (
+          {allBookings.length > 0 && (
             <div className="panel-section">
-              <div className="section-title">My Bookings</div>
-              <MyBookings bookings={myBookings} onCancel={handleCancel} />
+              <div className="section-title">Active Bookings</div>
+              <AdminBookings
+                bookings={allBookings}
+                onCancel={handleAdminCancel}
+              />
             </div>
           )}
 
@@ -260,10 +213,6 @@ export default function App() {
                 <div className="legend-dot" style={{ background: "#ef4444" }} />
                 Occupied
               </div>
-              <div className="legend-item">
-                <div className="legend-dot" style={{ background: "#f59e0b" }} />
-                Filling up
-              </div>
             </div>
             <ZoneStats slots={slots} />
           </div>
@@ -276,15 +225,13 @@ export default function App() {
           loading={loading}
           onBook={handleBook}
           onClose={() => setSelectedSlot(null)}
-          userLocation={userLocation}
         />
       )}
     </div>
   );
 }
 
-function SlotPopup({ slot, loading, onBook, onClose, userLocation }) {
-  const loc = userLocation || { lat: 18.5308, lng: 73.8474 };
+function SlotPopup({ slot, loading, onBook, onClose }) {
   return (
     <div
       style={{
@@ -378,12 +325,8 @@ function SlotPopup({ slot, loading, onBook, onClose, userLocation }) {
         disabled={slot.isOccupied || loading}
         onClick={() =>
           onBook({
-            lat: slot.lat,
-            lng: slot.lng,
-            startMin: 660,
-            endMin: 780,
+            durationHours: 2,
             vehicleType: slot.type === "EV" ? "EV" : "NORMAL",
-            directBook: true,
           })
         }
       >
@@ -391,7 +334,7 @@ function SlotPopup({ slot, loading, onBook, onClose, userLocation }) {
           ? "Slot Occupied"
           : loading
             ? "Booking..."
-            : "Book This Slot"}
+            : "Force Book This Slot"}
       </button>
     </div>
   );

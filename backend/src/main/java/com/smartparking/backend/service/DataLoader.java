@@ -19,15 +19,12 @@ import java.util.*;
 @Component
 public class DataLoader {
 
-    // --- All 8 Data Structures ---
-    public KDTree kdTree               = new KDTree();
-    public RTree rTree                 = new RTree();
+    // --- All Data Structures ---
+    public TrafficTracker trafficTracker;
     public SegmentTree segmentTree;
     public IntervalTree intervalTree   = new IntervalTree();
     public SkipList skipList           = new SkipList();
-    public MinHeap minHeap             = new MinHeap();
     public Trie trie                   = new Trie();
-    public Graph graph                 = new Graph();
 
     // Master list of all slots + fast lookup by ID
     public List<ParkingSlot> allSlots       = new ArrayList<>();
@@ -38,8 +35,7 @@ public class DataLoader {
 
     // Fixed zone list (matches Graph.java)
     private static final List<String> ZONES = Arrays.asList(
-        "Koregaon Park", "Shivajinagar", "FC Road", "Kothrud",
-        "Hadapsar", "Viman Nagar", "Aundh", "Baner", "Camp", "Deccan"
+        "Zone A", "Zone B", "Zone C", "Zone D", "Zone E", "Zone F"
     );
 
     @PostConstruct  // Spring calls this automatically after app starts
@@ -80,14 +76,12 @@ public class DataLoader {
             System.out.println("SegmentTree built. Total free slots: "
                 + segmentTree.getTotalFree());
 
-            // Step 5: Build KD-Tree
-            kdTree.build(allSlots);
-            System.out.println("KDTree built with " + allSlots.size() + " slots");
+            // Step 5: Build TrafficTracker
+            trafficTracker = new TrafficTracker(ZONES);
+            System.out.println("TrafficTracker initialized for " + ZONES.size() + " zones");
 
-            // Step 6: Build R-Tree
-            rTree.build(allSlots);
-            System.out.println("RTree built");
-
+            // Step 6: Empty - Removing KDTree, RTree, Graph
+            
             // Step 7: Build Interval Tree + Skip List
             // Insert all existing bookings into both
             for (ParkingSlot slot : allSlots) {
@@ -103,9 +97,6 @@ public class DataLoader {
                 trie.insert(zone);
             }
             System.out.println("Trie built with " + ZONES.size() + " zones");
-
-            // Step 9: Graph is self-initializing (edges defined in constructor)
-            System.out.println("Graph ready with " + ZONES.size() + " zones");
 
             System.out.println("=== DataLoader: All DS ready ===");
 

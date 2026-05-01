@@ -1,15 +1,4 @@
-const ZONES = [
-  "Koregaon Park",
-  "Shivajinagar",
-  "FC Road",
-  "Kothrud",
-  "Hadapsar",
-  "Viman Nagar",
-  "Aundh",
-  "Baner",
-  "Camp",
-  "Deccan",
-];
+const ZONES = ["Zone A", "Zone B", "Zone C", "Zone D", "Zone E", "Zone F"];
 
 export default function ZoneStats({ slots }) {
   // Count free and total per zone

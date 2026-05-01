@@ -41,17 +41,17 @@ public class ParkingController {
 
     // --- Cancel a booking ---
     @PostMapping("/cancel")
-    public boolean cancel(@RequestParam String slotId,
-                          @RequestParam int startMin,
-                          @RequestParam int endMin) {
-        return allocationService.cancelBooking(slotId, startMin, endMin);
-    }
-
-    // --- Browse mode: all available slots within radius (R-Tree) ---
-    @GetMapping("/browse")
-    public List<ParkingSlot> browse(@RequestParam double lat,
-                                    @RequestParam double lng) {
-        return allocationService.browse(lat, lng);
+    public String cancel(@RequestParam String slotId,
+                         @RequestParam int startMin,
+                         @RequestParam int endMin) {
+        boolean cancelled = allocationService.cancelBooking(slotId, startMin, endMin);
+        if (!cancelled) {
+            return "Failed to cancel or slot was not occupied.";
+        }
+        
+        // As soon as a slot is cancelled, we try to reallocate someone from a worse zone into this newly freed slot!
+        String reallocMsg = allocationService.triggerReallocation();
+        return "Booking cancelled. " + reallocMsg;
     }
 
     // --- Trie autocomplete for zone search bar ---
@@ -60,42 +60,13 @@ public class ParkingController {
         return allocationService.autocomplete(prefix);
     }
 
-    // --- Demo: simulate congestion in a zone ---
+    // --- Demo: simulate traffic congestion in a zone ---
     @PostMapping("/demo/congest")
     public String congestZone(@RequestParam String zone) {
-        int count = 0;
-        for (ParkingSlot slot : allocationService.getAllSlots()) {
-            if (slot.zone.equals(zone) && !slot.isOccupied && count < 13) {
-                slot.isOccupied = true;
-                // inject the DataLoader reference via AllocationService
-                count++;
-            }
-        }
-        // Update segment tree
-        for (int i = 0; i < count; i++) {
-            allocationService.congestZoneForDemo(zone);
-        }
-        return "Congested " + count + " slots in " + zone;
-    }
-
-    // Free up the closest occupied slot to a location (for reallocation demo)
-    @PostMapping("/demo/free-closest")
-    public String freeClosestSlot(@RequestParam double lat, @RequestParam double lng) {
-        ParkingSlot closest = null;
-        double minDist = Double.MAX_VALUE;
-
-        for (ParkingSlot slot : allocationService.getAllSlots()) {
-            if (!slot.isOccupied) continue;
-            double d = Math.sqrt(Math.pow(slot.lat - lat, 2) + Math.pow(slot.lng - lng, 2));
-            if (d < minDist) {
-                minDist = d;
-                closest = slot;
-            }
-        }
-
-        if (closest == null) return "No occupied slots found";
-        allocationService.cancelBooking(closest.slotId, 0, 1440);
-        return "Freed slot " + closest.slotId + " in " + closest.zone;
+        // By inserting 10 instant bookings into TrafficTracker for this zone,
+        // we instantly trigger the "High Traffic" reroute protocol for the next visitor.
+        allocationService.congestZoneForDemo(zone);
+        return "Simulated massive traffic (10 simultaneous bookings) in " + zone;
     }
 
     // --- Demo: reset all slots ---
