@@ -12,9 +12,11 @@ public class ParkingSlot {
     public String type;
     public int pricePerHour;
     public boolean isOccupied;
+    public long lastAssignedTimeMs; // NEW: Track when this was booked for reallocation
     public List<List<Integer>> bookings;  // changed from int[][] for JSON parsing
 
     public ParkingSlot() {
         this.bookings = new ArrayList<>();
+        this.lastAssignedTimeMs = 0;
     }
 }

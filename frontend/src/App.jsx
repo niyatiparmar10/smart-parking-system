@@ -17,6 +17,7 @@ export default function App() {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const [selectedSlot, setSelectedSlot] = useState(null);
+  const [filterZone, setFilterZone] = useState("");
 
   const refreshSlots = async () => {
     try {
@@ -130,7 +131,7 @@ export default function App() {
             <span>Pune, India</span>
           </div>
         </div>
-        <SearchBar api={API} />
+        <SearchBar api={API} onSelect={setFilterZone} />
         <button
           onClick={() => setIsKiosk(true)}
           style={{
@@ -164,7 +165,7 @@ export default function App() {
       <div className="main-layout">
         <div className="map-container">
           <MapPanel
-            slots={slots}
+            slots={filterZone ? slots.filter((s) => s.zone === filterZone) : slots}
             booking={booking}
             browseMode={false}
             onSlotClick={setSelectedSlot}
@@ -340,7 +341,7 @@ function SlotPopup({ slot, loading, onBook, onClose }) {
   );
 }
 
-function SearchBar({ api }) {
+function SearchBar({ api, onSelect }) {
   const [query, setQuery] = useState("");
   const [suggestions, setSuggestions] = useState([]);
 
@@ -363,6 +364,14 @@ function SearchBar({ api }) {
         value={query}
         onChange={handleChange}
       />
+      {query && (
+        <span
+           style={{cursor:"pointer", color:"#ef4444", marginLeft: "8px", fontSize: "14px"}}
+           onClick={() => { setQuery(""); setSuggestions([]); if (onSelect) onSelect(""); }}
+        >
+          ✕
+        </span>
+      )}
       {suggestions.length > 0 && (
         <div className="autocomplete-dropdown">
           {suggestions.map((s) => (
@@ -371,6 +380,7 @@ function SearchBar({ api }) {
               onClick={() => {
                 setQuery(s);
                 setSuggestions([]);
+                if (onSelect) onSelect(s);
               }}
             >
               {s}

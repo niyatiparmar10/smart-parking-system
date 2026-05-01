@@ -2,7 +2,7 @@
 
 ### Advanced Data Structures — Semester Project
 
-A full-stack intelligent parking allocation system for mall/venue parking, built using 9 advanced data structures implemented from scratch in Java.
+A full-stack intelligent parking allocation system for mall/venue parking, built using 6 advanced data structures implemented from scratch in Java.
 
 ---
 
@@ -12,7 +12,7 @@ This system simulates a real-world smart parking setup for a mall. A user walks 
 
 **Two Novelty Features:**
 
-1. **Congestion-Aware Zone Routing** — If the nearest zone is >80% full, Dijkstra's algorithm finds the next best zone
+1. **Congestion-Aware Zone Routing** — If the nearest zone is >80% full, the algorithm finds the next best zone
 2. **Dynamic Reallocation** — If a closer slot frees up within 10 seconds of your booking, the system automatically reassigns you
 
 ---
@@ -21,17 +21,14 @@ This system simulates a real-world smart parking setup for a mall. A user walks 
 
 | #   | Data Structure   | Role                                              |
 | --- | ---------------- | ------------------------------------------------- |
-| 1   | KD-Tree          | Find K nearest parking slots to entry point       |
-| 2   | R-Tree           | Find all slots within radius (browse mode)        |
-| 3   | Segment Tree     | Track free slot count per zone, detect congestion |
-| 4   | Interval Tree    | Detect booking time conflicts per slot            |
-| 5   | Skip List        | Sorted global booking interval search             |
-| 6   | Min-Heap         | Rank candidate slots by priority score            |
-| 7   | Trie             | Zone name autocomplete search                     |
-| 8   | HashMap          | O(1) slot lookup by Slot ID                       |
-| 9   | Graph + Dijkstra | Find nearest non-congested zone                   |
+| 1   | Segment Tree     | Track free slot count per zone, detect congestion |
+| 2   | Interval Tree    | Detect booking time conflicts per slot            |
+| 3   | Skip List        | Sorted global booking interval search             |
+| 4   | Trie             | Zone name autocomplete & map filter search        |
+| 5   | Min-Heap         | Rank candidate slots within a zone by priority    |
+| 6   | Queue Tracker    | Sliding window to detect real-time traffic spikes |
 
-All data structures are implemented from scratch — no built-in library DS used.
+All data structures are implemented from scratch — no built-in library DS used (except for basic HashMaps for O(1) slot lookup).
 
 ---
 
@@ -106,16 +103,16 @@ Frontend starts on http://localhost:5173
 ### Normal Booking
 
 1. Open Kiosk View
-2. Select vehicle type
-3. Click "Find Me a Parking Spot"
-4. System assigns best slot in milliseconds
+2. Select vehicle type and duration
+3. Click "Book This Slot"
+4. System assigns best slot using Segment Tree and Min-Heap
 
 ### Congestion Feature
 
 1. Go to Admin View
-2. Click "Simulate Congestion" → fills nearest zone
+2. Click "Spam Traffic (Zone A)" → simulates 10 real bookings
 3. Go to Kiosk View → book a slot
-4. System routes you to next available zone (Dijkstra)
+4. System routes you to next available zone (Queue sliding window)
 
 ### Dynamic Reallocation
 

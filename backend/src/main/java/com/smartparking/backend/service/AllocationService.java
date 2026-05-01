@@ -84,6 +84,8 @@ public class AllocationService {
     }
 
     private ParkingSlot findBestSlotInZone(String zone, String vType, int startMin, int endMin) {
+        com.smartparking.backend.ds.MinHeap heap = new com.smartparking.backend.ds.MinHeap();
+
         for (ParkingSlot slot : data.allSlots) {
             if (slot.zone.equals(zone) && !slot.isOccupied) {
                 // Vehicle type match
@@ -93,10 +95,19 @@ public class AllocationService {
                 boolean itConflict = data.intervalTree.hasConflict(slot.slotId, startMin, endMin);
                 if (itConflict) continue;
 
-                return slot;
+                // Rank slots by their ID number so lower IDs (e.g. A-1) are preferred over higher IDs (e.g. A-10)
+                int idNum = 999;
+                try {
+                    String[] parts = slot.slotId.split("-");
+                    idNum = Integer.parseInt(parts[1]);
+                } catch (Exception e) {}
+
+                heap.insert(new com.smartparking.backend.ds.MinHeap.HeapEntry(slot, idNum, 0.0));
             }
         }
-        return null;
+
+        com.smartparking.backend.ds.MinHeap.HeapEntry best = heap.extractMin();
+        return best != null ? best.slot : null;
     }
 
     // -------------------------------------------------------------------
@@ -132,6 +143,12 @@ public class AllocationService {
             
             for (ParkingSlot occupiedSlot : data.allSlots) {
                 if (occupiedSlot.isOccupied && occupiedSlot.zone.equals(worseZone)) {
+                    // Only reallocate if booked within the last 40 seconds
+                    long now = System.currentTimeMillis();
+                    if (now - occupiedSlot.lastAssignedTimeMs > 40000) {
+                        continue;
+                    }
+
                     // Try to reallocate this person to a better zone (e.g. Zone A -> current zone - 1)
                     int startM = occupiedSlot.bookings.get(occupiedSlot.bookings.size() - 1).get(0);
                     int endM = occupiedSlot.bookings.get(occupiedSlot.bookings.size() - 1).get(1);
@@ -163,6 +180,7 @@ public class AllocationService {
     // -------------------------------------------------------------------
     private void confirmBooking(ParkingSlot slot, int startMin, int endMin) {
         slot.isOccupied = true;
+        slot.lastAssignedTimeMs = System.currentTimeMillis();
         slot.bookings.add(Arrays.asList(startMin, endMin));
         
         data.intervalTree.insert(slot.slotId, startMin, endMin);
@@ -220,7 +238,16 @@ public class AllocationService {
     // DEMO CONTROLS
     // -------------------------------------------------------------------
     public void congestZoneForDemo(String zone) {
-        data.trafficTracker.congestZoneForDemo(zone);
+        int count = 0;
+        int startMin = (int) (System.currentTimeMillis() / 60000);
+        int endMin = startMin + 120; // Book for 2 hours
+
+        for (ParkingSlot slot : data.allSlots) {
+            if (slot.zone.equals(zone) && !slot.isOccupied && count < 10) {
+                confirmBooking(slot, startMin, endMin);
+                count++;
+            }
+        }
     }
     
     public void resetAllSlots() {
