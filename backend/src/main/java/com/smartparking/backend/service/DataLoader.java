@@ -9,13 +9,6 @@ import jakarta.annotation.PostConstruct;
 import java.io.InputStream;
 import java.util.*;
 
-/**
- * DataLoader runs ONCE when the Spring Boot app starts.
- * It reads slots.json and builds all 8 data structures.
- *
- * Think of this as the "setup" phase of the system.
- * After this runs, all DS are ready to serve requests.
- */
 @Component
 public class DataLoader {
 

@@ -2,31 +2,6 @@ package com.smartparking.backend.ds;
 
 import java.util.*;
 
-/**
- * Trie for zone name autocomplete.
- *
- * Stores zone names character by character in a tree.
- * When a user types "Ko", the Trie instantly returns:
- *   → ["Koregaon Park"]
- * When they type "Ba", it returns:
- *   → ["Baner"]
- *
- * Each node represents one character.
- * Each path from root to a marked node spells out a complete zone name.
- *
- * Visual example for "Camp" and "Camp Road":
- *
- * root
- *  └── C
- *       └── a
- *            └── m
- *                 └── p (isEnd=true) "Camp"
- *                      └── (space)
- *                            └── R
- *                                 └── o
- *                                      └── a
- *                                           └── d (isEnd=true) "Camp Road"
- */
 public class Trie {
 
     // --- One node in the Trie ---
@@ -139,16 +114,3 @@ public class Trie {
         return all;
     }
 }
-// ```
-
-// ---
-
-// **What this code does, simply:**
-
-// Every character of a zone name becomes a node. The path through nodes spells the word:
-// ```
-// Inserting "Aundh":
-// root → 'a' → 'u' → 'n' → 'd' → 'h' (isEnd = true, fullName = "Aundh")
-
-// Inserting "Baner":
-// root → 'b' → 'a' → 'n' → 'e' → 'r' (isEnd = true, fullName = "Baner")

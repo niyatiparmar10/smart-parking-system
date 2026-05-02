@@ -7,19 +7,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-/**
- * REST API controller.
- * Exposes endpoints that the React frontend will call.
- *
- * Base URL: http://localhost:8080/api
- *
- * Endpoints:
- *   GET  /api/slots              → all slots (for map display)
- *   POST /api/book               → book a slot
- *   POST /api/cancel             → cancel a booking
- *   GET  /api/browse             → radius search (R-Tree browse mode)
- *   GET  /api/zones/autocomplete → Trie autocomplete
- */
 @RestController
 @RequestMapping("/api")
 public class ParkingController {

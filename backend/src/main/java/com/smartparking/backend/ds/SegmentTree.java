@@ -2,18 +2,6 @@ package com.smartparking.backend.ds;
 
 import java.util.*;
 
-/**
- * Segment Tree for zone-level availability tracking.
- *
- * Stores the count of FREE slots per zone.
- * Supports:
- *   - Query: how many free slots are in a zone?
- *   - Update: decrement when a slot is booked, increment when freed
- *   - Range query: total free slots across a range of zones
- *
- * The zones are indexed 0 to n-1.
- * The tree is stored as an array (classic segment tree style).
- */
 public class SegmentTree {
 
     private int[] tree;      // the segment tree array
@@ -113,17 +101,3 @@ public class SegmentTree {
         }
     }
 }
-// ```
-
-// ---
-
-// **What this code does, simply:**
-
-// The segment tree array stores sums. If you have 10 zones, the tree looks like this internally:
-// ```
-//           [total free: all zones]
-//          /                       \
-//   [zones 0-4 free]          [zones 5-9 free]
-//    /          \               /           \
-// [0-2]        [3-4]        [5-7]          [8-9]
-//   ...          ...          ...            ...

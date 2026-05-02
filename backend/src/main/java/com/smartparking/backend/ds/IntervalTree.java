@@ -2,19 +2,6 @@ package com.smartparking.backend.ds;
 
 import java.util.*;
 
-/**
- * Interval Tree for booking conflict detection.
- *
- * Each parking slot has a list of booked time intervals e.g. [600, 720] = 10am to 12pm.
- * When a new booking request comes in, we need to check:
- * "Does this slot already have a booking that overlaps my requested time?"
- *
- * The tree is built per-slot. Each node stores an interval [start, end]
- * and tracks the maximum end time in its subtree (classic augmented BST approach).
- *
- * Time is stored as minutes from midnight:
- *   e.g. 9:30am = 570, 11:00am = 660, 2:00pm = 840
- */
 public class IntervalTree {
 
     // --- One time interval ---
@@ -161,22 +148,3 @@ public class IntervalTree {
         return String.format("%02d:%02d", h, m);
     }
 }
-// ```
-
-// ---
-
-// **What this code does, simply:**
-
-// Each parking slot gets its own mini interval tree. Think of it like each slot keeping a sorted diary of its bookings.
-
-// The **augmentation** (the `maxEnd` field) is what makes this a proper Interval Tree rather than just a BST. Every node stores the maximum end time anywhere in its subtree. This lets us prune entire branches instantly:
-// ```
-// If node.maxEnd < reqStart
-// → Every interval in this subtree ends before your booking starts
-// → Zero conflicts possible → skip entire subtree
-// ```
-
-// The overlap condition is simple and worth memorising for viva:
-// ```
-// Two intervals [s1,e1] and [s2,e2] overlap if:
-// s1 < e2  AND  s2 < e1

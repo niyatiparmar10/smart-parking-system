@@ -3,18 +3,6 @@ package com.smartparking.backend.ds;
 import com.smartparking.backend.model.ParkingSlot;
 import java.util.*;
 
-/**
- * Min-Heap for ranking candidate parking slots by priority score.
- *
- * Lower score = better slot (min-heap gives us the best slot at the top).
- *
- * Priority score formula:
- *   score = (distanceWeight * normalizedDistance)
- *         + (priceWeight * normalizedPrice)
- *         + (typeWeight * typeMismatchPenalty)
- *
- * The slot with the LOWEST score is the best match for the driver.
- */
 public class MinHeap {
 
     // --- One entry in the heap: a slot + its computed score ---
@@ -148,27 +136,4 @@ public class MinHeap {
              + (0.1 * typePenalty);
     }
 }
-// ```
 
-// ---
-
-// **What this code does, simply:**
-
-// The heap is stored as an **array** (an `ArrayList` here), not a tree with actual pointers. The parent-child relationship is purely mathematical:
-// ```
-// parent of node i  →  (i - 1) / 2
-// left child of i   →  2*i + 1
-// right child of i  →  2*i + 2
-// ```
-
-// So this array:
-// ```
-// [0.12,  0.34,  0.45,  0.67,  0.89]
-// ```
-// represents this tree:
-// ```
-//          0.12         ← index 0 (root = best slot)
-//         /    \
-//       0.34   0.45     ← index 1, 2
-//       /  \
-//    0.67  0.89         ← index 3, 4

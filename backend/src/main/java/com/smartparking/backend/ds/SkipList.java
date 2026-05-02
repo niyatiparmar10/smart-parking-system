@@ -2,23 +2,6 @@ package com.smartparking.backend.ds;
 
 import java.util.*;
 
-/**
- * Skip List for sorted booking interval search.
- *
- * A Skip List is a probabilistic data structure that works like a
- * sorted linked list but with multiple "express lanes" on top.
- * Each higher level skips over more elements, giving O(log n) search.
- *
- * Visual idea:
- * Level 3: [head] -----------------------> [480] ---------> [null]
- * Level 2: [head] ---------> [360] ------> [480] -> [720] -> [null]
- * Level 1: [head] -> [240] -> [360] ------> [480] -> [600] -> [720] -> [null]
- * Level 0: [head] -> [240] -> [360] -> [420] -> [480] -> [600] -> [720] -> [null]
- *
- * We use it to store booking start times per slot,
- * so we can quickly find "is there any booking starting near time T?"
- * This is a secondary check after the Interval Tree.
- */
 public class SkipList {
 
     private static final int MAX_LEVEL = 4;   // maximum number of levels
@@ -165,24 +148,3 @@ public class SkipList {
         }
     }
 }
-// ```
-
-// ---
-
-// **What this code does, simply:**
-
-// Think of a normal sorted linked list — searching it is O(n) because you scan from left to right. A Skip List adds express lanes on top:
-
-// - **Level 0** — every node (full list, slow but complete)
-// - **Level 1** — roughly every 2nd node
-// - **Level 2** — roughly every 4th node
-// - **Level 3+** — fewer and fewer nodes
-
-// When searching, you start at the top level, skip large chunks, drop down a level when you overshoot, and repeat. Average O(log n) just like a balanced tree, but much simpler to implement.
-
-// **The probabilistic part:** When inserting, we flip a coin (50% chance) to decide if a node gets promoted to the next level. This randomness is what keeps the list balanced on average without complex rotation logic like AVL trees need.
-
-// **How it works with IntervalTree in your pipeline:**
-// ```
-// IntervalTree  → per-slot conflict check  (precise, per slot)
-// SkipList      → global cross-slot check  (fast scan across all bookings)
