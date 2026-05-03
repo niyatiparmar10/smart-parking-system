@@ -18,12 +18,19 @@ export default function App() {
   const [loading, setLoading] = useState(false);
   const [selectedSlot, setSelectedSlot] = useState(null);
   const [filterZone, setFilterZone] = useState("");
+  const [totalFree, setTotalFree] = useState(0);
+  const [rangeStart, setRangeStart] = useState("Zone A");
+  const [rangeEnd, setRangeEnd] = useState("Zone C");
+  const [rangeResult, setRangeResult] = useState(null);
 
   const refreshSlots = async () => {
     try {
       const res = await axios.get(`${API}/slots`);
       setSlots(res.data);
       setAllBookings(res.data.filter((s) => s.isOccupied));
+      
+      const totalRes = await axios.get(`${API}/zones/total-free`);
+      setTotalFree(totalRes.data);
     } catch {
       // API error
     }
@@ -92,6 +99,15 @@ export default function App() {
     setBooking(null);
     setAllBookings([]);
     await refreshSlots();
+  };
+
+  const handleRangeQuery = async () => {
+    try {
+      const res = await axios.get(`${API}/zones/range-free?startZone=${rangeStart}&endZone=${rangeEnd}`);
+      setRangeResult(res.data);
+    } catch (e) {
+      console.error(e);
+    }
   };
 
   if (isKiosk) {
@@ -202,6 +218,35 @@ export default function App() {
               />
             </div>
           )}
+
+          <div className="panel-section">
+            <div className="section-title">Check free slots</div>
+            
+            <div style={{ marginBottom: "12px", fontSize: "14px", fontWeight: "600", color: "#00c896" }}>
+              Total Free Slots (Overall): {totalFree}
+            </div>
+            
+            <div style={{ display: "flex", gap: "8px", alignItems: "center", flexWrap: "wrap", marginBottom: "8px" }}>
+              <select value={rangeStart} onChange={e => setRangeStart(e.target.value)} style={{ padding: "4px", borderRadius: "4px", background: "rgba(255,255,255,0.1)", color: "white", border: "1px solid rgba(255,255,255,0.2)" }}>
+                {["Zone A", "Zone B", "Zone C", "Zone D", "Zone E", "Zone F"].map(z => <option key={z} value={z}>{z}</option>)}
+              </select>
+              <span style={{ fontSize: "12px", color: "#94a3b8" }}>to</span>
+              <select value={rangeEnd} onChange={e => setRangeEnd(e.target.value)} style={{ padding: "4px", borderRadius: "4px", background: "rgba(255,255,255,0.1)", color: "white", border: "1px solid rgba(255,255,255,0.2)" }}>
+                {["Zone A", "Zone B", "Zone C", "Zone D", "Zone E", "Zone F"].map(z => <option key={z} value={z}>{z}</option>)}
+              </select>
+              <button 
+                onClick={handleRangeQuery}
+                style={{ padding: "4px 8px", borderRadius: "4px", background: "#3b82f6", color: "white", border: "none", cursor: "pointer", fontSize: "12px", fontWeight: "600" }}
+              >
+                Query Range
+              </button>
+            </div>
+            {rangeResult !== null && (
+              <div style={{ fontSize: "13px", color: "#f0f4ff", padding: "6px", background: "rgba(255,255,255,0.05)", borderRadius: "4px" }}>
+                Available slots in range: <strong style={{color:"#00c896"}}>{rangeResult}</strong>
+              </div>
+            )}
+          </div>
 
           <div className="panel-section">
             <div className="section-title">Zone Availability</div>

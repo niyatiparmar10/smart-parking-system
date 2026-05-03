@@ -116,18 +116,18 @@ public class AllocationService {
     @Scheduled(fixedRate = 60000)
     public void autoExpireSlots() {
         int currentMin = (int) (System.currentTimeMillis() / 60000);
-        List<String> toCancel = new ArrayList<>();
-
-        for (ParkingSlot slot : data.allSlots) {
-            if (slot.isOccupied && !slot.bookings.isEmpty()) {
-                // Find active booking by finding the end time. For simplicity, just check max end time
-                int slotEndMin = slot.bookings.get(slot.bookings.size() - 1).get(1);
-                int slotStartMin = slot.bookings.get(slot.bookings.size() - 1).get(0);
-                if (currentMin >= slotEndMin) {
-                    System.out.println("Auto-expiring slot " + slot.slotId + " (Time up)");
-                    cancelBooking(slot.slotId, slotStartMin, slotEndMin);
-                }
-            }
+        
+        // SkipList is sorted by endTime. It allows us to pluck out expired bookings in O(1) time
+        // without looping through the other 100+ active slots!
+        List<String[]> expiredBookings = data.skipList.getExpired(currentMin);
+        
+        for (String[] exp : expiredBookings) {
+            String slotId = exp[0];
+            int s = Integer.parseInt(exp[1]);
+            int e = Integer.parseInt(exp[2]);
+            
+            System.out.println("Auto-expiring slot " + slotId + " (Time up)");
+            cancelBooking(slotId, s, e);
         }
     }
 
@@ -206,7 +206,7 @@ public class AllocationService {
             int e = b.get(1);
             if (s == startMin && e == endMin) {
                 data.intervalTree.remove(slotId, s, e);
-                data.skipList.delete(s, slotId);
+                data.skipList.delete(e, slotId); // SkipList deletes using endMin now
             } else {
                 updatedBookings.add(b);
             }
@@ -232,6 +232,17 @@ public class AllocationService {
     public List<String> autocomplete(String prefix) {
         if (data.trie == null) return new ArrayList<>();
         return data.trie.autocomplete(prefix);
+    }
+
+    // -------------------------------------------------------------------
+    // SEGMENT TREE QUERIES
+    // -------------------------------------------------------------------
+    public int getTotalFreeSlots() {
+        return data.segmentTree.getTotalFree();
+    }
+
+    public int getFreeSlotsInRange(String startZone, String endZone) {
+        return data.segmentTree.getRangeFree(startZone, endZone);
     }
 
     // -------------------------------------------------------------------

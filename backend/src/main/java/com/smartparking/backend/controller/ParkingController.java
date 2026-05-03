@@ -47,6 +47,17 @@ public class ParkingController {
         return allocationService.autocomplete(prefix);
     }
 
+    // --- Segment Tree Range Queries ---
+    @GetMapping("/zones/total-free")
+    public int getTotalFree() {
+        return allocationService.getTotalFreeSlots();
+    }
+
+    @GetMapping("/zones/range-free")
+    public int getRangeFree(@RequestParam String startZone, @RequestParam String endZone) {
+        return allocationService.getFreeSlotsInRange(startZone, endZone);
+    }
+
     // --- Demo: simulate traffic congestion in a zone ---
     @PostMapping("/demo/congest")
     public String congestZone(@RequestParam String zone) {

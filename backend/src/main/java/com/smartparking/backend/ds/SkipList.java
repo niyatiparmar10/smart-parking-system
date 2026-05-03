@@ -51,7 +51,7 @@ public class SkipList {
 
         // Find insertion position at each level (top to bottom)
         for (int i = currentLevel; i >= 0; i--) {
-            while (current.next[i] != null && current.next[i].startTime < startTime) {
+            while (current.next[i] != null && current.next[i].endTime < endTime) {
                 current = current.next[i];
             }
             update[i] = current;
@@ -75,49 +75,32 @@ public class SkipList {
         }
     }
 
-    // --- Search: find all bookings that overlap with [reqStart, reqEnd] ---
-    public List<String> findConflictingSlots(int reqStart, int reqEnd) {
-        List<String> conflicting = new ArrayList<>();
-        SkipNode current = head.next[0]; // start at level 0 (full list)
-
-        // Use top level to skip ahead to roughly reqStart
-        SkipNode fastCurrent = head;
-        for (int i = currentLevel; i >= 0; i--) {
-            while (fastCurrent.next[i] != null
-                   && fastCurrent.next[i].startTime < reqStart - 1) {
-                fastCurrent = fastCurrent.next[i];
-            }
-        }
-        current = fastCurrent.next[0];
-
-        // From here, scan forward at level 0 checking overlaps
-        // Stop when startTime >= reqEnd (no more possible overlaps)
-        while (current != null && current.startTime < reqEnd) {
-            // Overlap condition: start1 < end2 AND start2 < end1
-            if (current.startTime < reqEnd && reqStart < current.endTime) {
-                conflicting.add(current.slotId);
-            }
+    // --- Get expired bookings (O(1) time because they are at the front!) ---
+    public List<String[]> getExpired(int currentMin) {
+        List<String[]> expired = new ArrayList<>();
+        SkipNode current = head.next[0];
+        
+        // Since list is sorted by endTime, all expired bookings are at the front
+        while (current != null && current.endTime <= currentMin) {
+            expired.add(new String[]{
+                current.slotId, 
+                String.valueOf(current.startTime), 
+                String.valueOf(current.endTime)
+            });
             current = current.next[0];
         }
-
-        return conflicting;
-    }
-
-    // --- Search: does a specific slot have any conflict? ---
-    public boolean hasConflict(String slotId, int reqStart, int reqEnd) {
-        List<String> conflicts = findConflictingSlots(reqStart, reqEnd);
-        return conflicts.contains(slotId);
+        return expired;
     }
 
     // --- Delete a booking (for cancellations) ---
-    public void delete(int startTime, String slotId) {
+    public void delete(int endTime, String slotId) {
         SkipNode[] update = new SkipNode[MAX_LEVEL + 1];
         SkipNode current = head;
 
         for (int i = currentLevel; i >= 0; i--) {
             while (current.next[i] != null
-                   && (current.next[i].startTime < startTime
-                       || (current.next[i].startTime == startTime
+                   && (current.next[i].endTime < endTime
+                       || (current.next[i].endTime == endTime
                            && !current.next[i].slotId.equals(slotId)))) {
                 current = current.next[i];
             }
@@ -127,7 +110,7 @@ public class SkipList {
         current = current.next[0];
 
         // Only delete if we found the right node
-        if (current != null && current.startTime == startTime
+        if (current != null && current.endTime == endTime
                 && current.slotId.equals(slotId)) {
             for (int i = 0; i <= currentLevel; i++) {
                 if (update[i].next[i] != current) break;

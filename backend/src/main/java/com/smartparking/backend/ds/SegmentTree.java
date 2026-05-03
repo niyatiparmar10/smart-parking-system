@@ -79,6 +79,22 @@ public class SegmentTree {
         return tree[1]; // root of segment tree = sum of everything
     }
 
+    // --- Query: free slots in a range of zones ---
+    public int getRangeFree(String startZone, String endZone) {
+        int l = zoneIndex.getOrDefault(startZone, -1);
+        int r = zoneIndex.getOrDefault(endZone, -1);
+        if (l == -1 || r == -1) return 0;
+        if (l > r) { int temp = l; l = r; r = temp; }
+        return queryRange(1, 0, n - 1, l, r);
+    }
+
+    private int queryRange(int node, int start, int end, int l, int r) {
+        if (r < start || end < l) return 0;
+        if (l <= start && end <= r) return tree[node];
+        int mid = (start + end) / 2;
+        return queryRange(2 * node, start, mid, l, r) + queryRange(2 * node + 1, mid + 1, end, l, r);
+    }
+
     // --- Congestion check: is this zone more than 80% full? ---
     public boolean isCongested(String zone, int totalSlotsInZone) {
         int free = getFreeCount(zone);
